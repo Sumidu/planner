@@ -36,30 +36,30 @@ SPRINT_LENGTH = 14
 # Change it here or use a separate file to load it, if your week plan changes regularly
 
 # Names by day of week, 0 is Sunday.
-OOOS_BY_WDAY = [nil, nil, ['Juan'], ['Kelly'], nil, ['Alex', 'Edna'], nil]
+#OOOS_BY_WDAY = [nil, nil, ['Juan'], ['Kelly'], nil, ['Alex', 'Edna'], nil]
 
 
 # Repeating tasks by day of week, 0 is Sunday. Nested index is the row.
-TASKS_BY_WDAY = [
-  { 0 => 'Plan meals' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Plan next week' },
-]
+#TASKS_BY_WDAY = [
+#  { 0 => 'Plan meals' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Plan next week' },
+#]
 
 # Repeating Appointments by day of week, 0 is Sunday. Nested index is a value in HOUR_LABELS.
-APPOINTMENTS_BY_WDAY = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-]
+#APPOINTMENTS_BY_WDAY = [
+#  {},
+#  {},
+#  {},
+#  {},
+#  {},
+#  {},
+#  {},
+#]
 
 # Here you could load your week plan from another file
-#require_relative './my_summer_plan'
+require_relative './my_summer_plan'
