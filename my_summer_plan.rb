@@ -1,4 +1,4 @@
-OOOS_BY_WDAY = [nil, nil, ['Jork Milde', 'Lilian', 'Hendrik', 'Marvin', 'Maged', 'Marthe' ], ['Toni'], ['Leonard'], nil, nil]
+OOOS_BY_WDAY = [nil, nil, ['Jork Milde', 'Melissa', 'Lilian', 'Hendrik', 'Marvin', 'Maged', 'Marthe' ], ['Toni'], ['Leonard'], nil, nil]
 
 TASKS_BY_WDAY = [
   { 0 => 'Wochenplan' }, # Sonntag
