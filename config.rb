@@ -38,7 +38,10 @@ SPRINT_LENGTH = 14
 # Change it here or use a separate file to load it, if your week plan changes regularly
 
 # Names by day of week, 0 is Sunday.
-#OOOS_BY_WDAY = [nil, nil, ['Juan'], ['Kelly'], nil, ['Alex', 'Edna'], nil]
+
+OOOS_BY_WDAY = [nil, nil, ['Juan'], ['Kelly'], nil, ['Alex', 'Edna'], nil]
+# If you want to have your one on one pages laid out side by side, set this to true
+OOOS_SIDE_BY_SIDE = false
 
 
 # Repeating tasks by day of week, 0 is Sunday. Nested index is the row.

@@ -19,8 +19,7 @@ de:
         November,
         Dezember,
       ]
-    abbr_month_names:
-      [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
     formats:
       default: "%d.%m.%Y"
       short: "%d. %b"
@@ -58,17 +57,17 @@ de:
   semester_overview: "Semesterübersicht"
   weekly_overview: "Wochenübersicht"
 
-  personal_notes: "Persönliches/Notizen"
-  personal_notes_example: "Partner, Kinder, Haustiere, Hobbies, Freunde, Vorgeschichte, etc."
-  their_update: "Ihr Update"
-  their_update_instructions: "Notizen aus ihren “10 Minuten”"
-  my_update: "Mein Update"
-  my_update_instructions: "Notizen als Vorbereitung für meine “10 Minuten”"
-  future: "Zukunft/Follow Up"
-  future_instructions: "Was kommt als nächstes? Dinge für das nächste 1:1"
-  additional_notes: "Zusätzliche Notizen"
-  feedback: "Feedback"
-  questions_to_ask: "Leitfragen"
+  personal_notes: "Persönliches/Notizen:"
+  personal_notes_example: "(Partner, Kinder, Haustiere, Hobbies, Freunde, Vorgeschichte, etc.)"
+  their_update: "Ihr Update:"
+  their_update_instructions: "(Notizen aus ihren “10 Minuten”)"
+  my_update: "Mein Update:"
+  my_update_instructions: "(Notizen als Vorbereitung für meine “10 Minuten”)"
+  future: "Zukunft/Follow Up:"
+  future_instructions: "(Was kommt als nächstes? Dinge für das nächste 1:1)"
+  additional_notes: "Zusätzliche Notizen:"
+  feedback: "Feedback:"
+  questions_to_ask: "Leitfragen:"
   questions_left: |
     • An was hast Du diese Woche gearbeitet?
     • Wie ist es Dir seit letzter Woche ergangen??

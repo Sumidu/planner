@@ -34,14 +34,19 @@ def one_on_one_page pdf, name, date
   # end
 
   sections(pdf, 2, body_row_count, {
-    2 => "#{I18n.t('personal_notes')}: <color rgb='#{MEDIUM_COLOR}'>(#{I18n.t('personal_notes_example')})</color>",
-    5 => "#{I18n.t('their_update')}: <color rgb='#{MEDIUM_COLOR}'>(#{I18n.t('their_update_instructions')})</color>",
-    15 => "#{I18n.t('my_update')}: <color rgb='#{MEDIUM_COLOR}'>(#{I18n.t('my_update_instructions')})</color>",
-    24 => "#{I18n.t('future')}: <color rgb='#{MEDIUM_COLOR}'>(#{I18n.t('future_instructions')})</color>",
+    2 => "#{I18n.t('personal_notes')} <color rgb='#{MEDIUM_COLOR}'>#{I18n.t('personal_notes_example')}</color>",
+    5 => "#{I18n.t('their_update')} <color rgb='#{MEDIUM_COLOR}'>#{I18n.t('their_update_instructions')}</color>",
+    15 => "#{I18n.t('my_update')} <color rgb='#{MEDIUM_COLOR}'>#{I18n.t('my_update_instructions')}</color>",
+    24 => "#{I18n.t('future')} <color rgb='#{MEDIUM_COLOR}'>#{I18n.t('future_instructions')}</color>",
   })
 
   # Back of the page
-  begin_new_page pdf, :right
+  if (OOOS_SIDE_BY_SIDE)
+    begin_new_page pdf, :right
+  else
+    begin_new_page pdf, :left
+  end
+
 
   pdf.grid([0, 0],[1, 1]).bounding_box do
     pdf.text name, heading_format(align: :left)
@@ -54,33 +59,18 @@ def one_on_one_page pdf, name, date
   question_end = question_start + 4
 
   sections(pdf, 2, question_start - 1, {
-    2 => "#{I18n.t('additional_notes')}:",
-    20 => "#{I18n.t('feedback')}:",
+    2 => I18n.t('additional_notes'),
+    20 => I18n.t('feedback'),
   })
 
   pdf.grid([question_start, 0],[question_start, 3]).bounding_box do
-    pdf.text "#{I18n.t('questions_to_ask')}:", valign: :bottom, color: DARK_COLOR
+    pdf.text I18n.t('questions_to_ask'), valign: :bottom, color: DARK_COLOR
   end
   pdf.grid([question_start + 1, 0],[question_end, 1]).bounding_box do
-    pdf.text I18n.t('questions_left'),
-      #"• Tell me about what you’ve been working on.\n" +
-      #"• Tell me about your week – what’s it been like?\n" +
-      #"• Tell me about your family/weekend/activities?\n" +
-      #"• Where are you on ( ) project?\n" +
-      #"• Are you on track to meet the deadline?\n" +
-      #"• What questions do you have about the project?\n" +
-      #"• What did ( ) say about this?",
-      size: 10, color: MEDIUM_COLOR
+    pdf.text I18n.t('questions_left'), size: 10, color: MEDIUM_COLOR
   end
   pdf.grid([question_start + 1, 2],[question_end, 3]).bounding_box do
-    pdf.text I18n.t('questions_right'),
-    #  "• Is there anything I need to do, and if so by when?\n" +
-    #  "• How are you going to approach this?\n" +
-    #  "• What do you think you should do?\n" +
-    #  "• So, you’re going to do “( )” by “( )”, right?\n" +
-    #  "• What can you/we do differently next time?\n" +
-    #  "• Any ideas/suggestions/improvements?",
-      size: 10, color: MEDIUM_COLOR
+    pdf.text I18n.t('questions_right'), size: 10, color: MEDIUM_COLOR
   end
 end
 
@@ -93,7 +83,11 @@ sunday = options[:date]
 pdf = init_pdf
 
 options[:weeks].times do |week|
-  begin_new_page(pdf, :right) unless week.zero?
+  if (OOOS_SIDE_BY_SIDE)
+    begin_new_page(pdf, :left) unless week.zero?
+  else
+    begin_new_page(pdf, :right) unless week.zero?
+  end
 
   monday = sunday.next_day(1)
   next_sunday = sunday.next_day(7)
@@ -102,10 +96,14 @@ options[:weeks].times do |week|
 #pdf = init_pdf
 hole_punches pdf
 
-# we add a notes page at the beginning to start on a left page
-heading_left = I18n.t('notes_heading')
-notes_page pdf, heading_left
-begin_new_page pdf, :left
+# If you want to have your one on one pages laid out side by side,
+# you need to add a blank or notes page in the beginning
+## we add a notes page at the beginning to start on a left page
+if OOOS_SIDE_BY_SIDE
+  heading_left = I18n.t('notes_heading')
+  notes_page pdf, heading_left
+  begin_new_page pdf, :left
+end
 
 OOOS_BY_WDAY
   .each_with_index
@@ -113,16 +111,25 @@ OOOS_BY_WDAY
   .flat_map { |names, wday| names.map {|name| [name, sunday.next_day(wday)] } }
   .sort_by { |name, date| "#{name}#{date.iso8601}" } # Sort by name or date, as you like
   .each_with_index { |name_and_date, index|
-    begin_new_page(pdf, :left) unless index.zero?
+    if OOOS_SIDE_BY_SIDE
+      begin_new_page(pdf, :left) unless index.zero?
+    else
+      begin_new_page(pdf, :right) unless index.zero?
+    end
     one_on_one_page(pdf, *name_and_date)
   }
 
   sunday = sunday.next_day(7)
 end
-# we add a notes page at the end to end on a left page
-begin_new_page pdf, :left
-heading_left = I18n.t('notes_heading')
-notes_page pdf, heading_left
+
+
+
+# we add a notes page at the end to end on a left page, if in side by side mode
+if OOOS_SIDE_BY_SIDE
+  begin_new_page pdf, :left
+  heading_left = I18n.t('notes_heading')
+  notes_page pdf, heading_left
+end
 
 
 puts "Saving to #{FILE_NAME_OOO}"
