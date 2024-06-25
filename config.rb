@@ -1,4 +1,6 @@
 # Hours shown on the day schedule. You can leave nils if you want a blank to write in.
+FILE_NAME_OOO = "form_one-on-one.pdf"
+FILE_NAME_PLAN = "form_time_block.pdf"
 HOUR_LABELS = [nil, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, nil, nil]
 HOUR_COUNT = HOUR_LABELS.length
 COLUMN_COUNT = 4

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative './shared'
-FILE_NAME = "one-on-one_forms.pdf"
 
 
 def sections pdf, first_row, last_row, headings
@@ -126,5 +125,5 @@ heading_left = I18n.t('notes_heading')
 notes_page pdf, heading_left
 
 
-puts "Saving to #{FILE_NAME}"
-pdf.render_file FILE_NAME
+puts "Saving to #{FILE_NAME_OOO}"
+pdf.render_file FILE_NAME_OOO
