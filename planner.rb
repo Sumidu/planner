@@ -469,5 +469,5 @@ options[:weeks].times do |week|
   sunday = sunday.next_day(7)
 end
 
-puts "Saving to #{FILE_NAME}"
-pdf.render_file FILE_NAME
+puts "Saving to #{FILE_NAME_PLAN}"
+pdf.render_file FILE_NAME_PLAN

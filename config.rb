@@ -1,4 +1,6 @@
 # Hours shown on the day schedule. You can leave nils if you want a blank to write in.
+FILE_NAME_OOO = "form_one-on-one.pdf"
+FILE_NAME_PLAN = "form_time_block.pdf"
 HOUR_LABELS = [nil, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, nil, nil]
 HOUR_COUNT = HOUR_LABELS.length
 COLUMN_COUNT = 4
@@ -36,32 +38,33 @@ SPRINT_LENGTH = 14
 # Change it here or use a separate file to load it, if your week plan changes regularly
 
 # Names by day of week, 0 is Sunday.
+
 OOOS_BY_WDAY = [nil, nil, ['Juan'], ['Kelly'], nil, ['Alex', 'Edna'], nil]
 # If you want to have your one on one pages laid out side by side, set this to true
 OOOS_SIDE_BY_SIDE = false
 
 
 # Repeating tasks by day of week, 0 is Sunday. Nested index is the row.
-TASKS_BY_WDAY = [
-  { 0 => 'Plan meals' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Update standup notes' },
-  { 0 => 'Plan next week' },
-]
+#TASKS_BY_WDAY = [
+#  { 0 => 'Plan meals' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Update standup notes' },
+#  { 0 => 'Plan next week' },
+#]
 
 # Repeating Appointments by day of week, 0 is Sunday. Nested index is a value in HOUR_LABELS.
-APPOINTMENTS_BY_WDAY = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-]
+#APPOINTMENTS_BY_WDAY = [
+#  {},
+#  {},
+#  {},
+#  {},
+#  {},
+#  {},
+#  {},
+#]
 
 # Here you could load your week plan from another file
-#require_relative './my_summer_plan'
+require_relative './my_summer_plan'
